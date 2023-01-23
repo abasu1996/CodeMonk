@@ -1,5 +1,5 @@
 import random
-
+from HangMan_Words import word_list
 stages = ['''
   +---+
   |   |
@@ -57,14 +57,15 @@ stages = ['''
 =========
 ''']
 lives = 6
-words = ['apple','pear','banana','Jackfruit','Orange','Grapes']
-random_word = random.choice(words)
+
+random_word = random.choice(word_list)
 display = []
 for dash in range(len(random_word)):
     display+='_'
 game_end = False
 
 print(display)
+print(random_word)
 while not game_end:
     Guess_Word = input("Guess The Letter: ").lower()
 
@@ -72,8 +73,10 @@ while not game_end:
         letter = random_word[position]
         if letter == Guess_Word:
             display[position] = letter
+            if Guess_Word in display:
+              print("You already chose this word..!!")
     print(display)
-    
+        
     if Guess_Word not in random_word:
         lives -=1
         if lives == 0:
