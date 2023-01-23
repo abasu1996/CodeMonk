@@ -1,5 +1,4 @@
 import random
-
 heights = input("Mention the heights of the students...").split(" ")
 total_height = 0
 for item in heights:
