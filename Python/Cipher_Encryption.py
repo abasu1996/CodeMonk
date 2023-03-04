@@ -1,41 +1,36 @@
+alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i',
+            'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x',
+            'y', 'z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n',
+            'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 
-alphabet =['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', ' ', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z','a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', ' ', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
-
-
-def encrypt(plain_text, shift_amount):
+direction = input("Type 'encode' to encrypt and Type 'decode' to decrypt or 'exit to stop':\n")
+def cipher(plain_text, shift_amount, cipher_direction):
     cipher_text = ""
-    for letter in plain_text:
-        each_letter = alphabet.index(letter)
-        new_position = each_letter + shift_amount
-        new_letter = alphabet[new_position]
-        cipher_text += new_letter
-    print(f"The cipher text is {cipher_text}")
+    shift_amount = shift_amount % 26
+    if cipher_direction == "decode":
+        shift_amount *= -1
+    for char in plain_text:
+        if char in alphabet:
+            each_letter = alphabet.index(char)
+            new_position = each_letter + shift_amount
+            new_letter = alphabet[new_position]
+            cipher_text += new_letter
+        else:
+            cipher_text += char
+    print(f"The {cipher_direction}d text is {cipher_text}")
 
 
-def decrypt(plain_text, shift_amount):
-    cipher_text = ""
-    for letter in plain_text:
-        each_letter = alphabet.index(letter)
-        new_position = each_letter - shift_amount
-        new_letter = alphabet[new_position]
-        cipher_text += new_letter
-    print(f"The cipher text is {cipher_text}")
 
-def cipher_direction():
 
-    direction = input("Type 'encode' to encrypt and Type 'decode' to decrypt or 'exit to stop':\n")
-    while not direction == "exit":
-        if direction == "encode":
+def cipher_direction(shift_dir):
+    while not shift_dir == "exit":
+        if shift_dir == "encode":
             text = input("Type your message ").lower()
             shift = int(input("How much shift you want? "))
-            encrypt(text, shift)
+            cipher(text, shift, shift_dir)
         else:
             text = input("Type your message ").lower()
             shift = int(input("How much shift you want? "))
-            decrypt(text, shift)
-        direction = input("Type 'encode' to encrypt and Type 'decode' to decrypt or 'exit to stop':\n")
-cipher_direction()
-
-
-
-
+            cipher(text, shift, shift_dir)
+        shift_dir = input("Type 'encode' to encrypt and Type 'decode' to decrypt or 'exit to stop':\n")
+cipher_direction(direction)
