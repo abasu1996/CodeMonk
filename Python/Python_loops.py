@@ -25,7 +25,6 @@ for score in list_down_scores:
 print(f"The highest score is...{highest_score}")
 
 ##Adding even numbers
-
 total = 0
 for number in range(0,100,2):
     total+=number
