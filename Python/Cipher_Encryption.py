@@ -1,8 +1,7 @@
 
 alphabet =['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', ' ', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z','a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', ' ', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 
-print(alphabet[9])
-letter_list = []
+
 def encrypt(plain_text, shift_amount):
     cipher_text = ""
     for letter in plain_text:
